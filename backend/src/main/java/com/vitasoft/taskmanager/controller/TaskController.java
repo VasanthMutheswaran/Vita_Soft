@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * REST Controller for managing Task CRUD operations.
- * endpoints are secured and require a valid JWT token.
+ * Handles all the task-related endpoints (creating, updating, fetching, etc).
+ * Everything here requires a valid JWT token.
  */
 @RestController
 @RequestMapping("/api/tasks")
@@ -22,11 +22,11 @@ public class TaskController {
     private final TaskService taskService;
 
     /**
-     * Creates a new task for the currently authenticated user.
+     * Create a new task tied to the logged-in user.
      * 
-     * @param taskDto        The task data payload
-     * @param authentication The Spring Security authentication token
-     * @return The created Task object
+     * @param taskDto        the task details from the request body
+     * @param authentication to grab the username of who is making the request
+     * @return the saved task DTO
      */
     @PostMapping
     public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto, Authentication authentication) {

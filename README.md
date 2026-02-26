@@ -1,62 +1,49 @@
-# Secure Task Management Dashboard
+# Task Manager Dashboard
 
-A full-stack, secure task management dashboard connecting a React + TypeScript frontend to a Java Spring Boot API.
-Built for the Pure FS Technical Assessment.
+Hey! Thanks for checking out my submission for the Full-Stack Integration Task. I've built a secure task management dashboard connecting a React frontend to a Spring Boot backend.
 
-## Technologies Used
-* **Backend:** Java 17, Spring Boot 3.x, Spring Security (JWT), Spring Data JPA, PostgreSQL, Lombok, Springdoc OpenAPI.
-* **Frontend:** React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, Zustand (state management), React Query (data fetching), Axios, Lucide React (icons), Date-fns (date formatting).
+## Tech Stack
+* **Backend:** Java 17, Spring Boot 3, Spring Security (JWT), Spring Data JPA, PostgreSQL, Lombok, and Swagger for API docs.
+* **Frontend:** React, TypeScript, Vite, Tailwind v4, Framer Motion for animations, Zustand for state, React Query for data fetching, and Axios.
 
-## Features
-- Complete JWT based User Authentication setup (Register & Login)
-- Task CRUD capabilities (Create, Relational Read, Update, Delete, Toggle Complete)
-- Advanced UI/UX with Framer Motion Layout Animations and Glassmorphism modals
-- Centralized Data Store with React Query caching logic
-- Fully strict typings across boundaries
+## Core Features
+- Full JWT Authentication flow (Register and Login).
+- CRUD operations for tasks (Create, Read, Update, Delete, and Complete toggles).
+- Smooth UI transitions using Framer Motion.
+- JWT tokens are stored securely and managed via Zustand.
+- Strict TypeScript configurations across both the client and server.
 
-## How to Run
+## Getting Started
 
 ### 1. Database Setup
-Create a PostgreSQL database called `task_manager` (or configure a different name in `backend/src/main/resources/application.properties`).
-Update the `spring.datasource.password` (currently set to `1234`) according to your local Postgres engine.
+First, make sure you have PostgreSQL running. Create a new database called `task_manager`. 
+You might need to update the passwords in `backend/src/main/resources/application.properties` to match your local setup (I currently left the password as `1234` for testing).
 
-### 2. Backend Installation
+### 2. Running the Backend
 ```bash
 cd backend
 ./mvnw clean install
 ./mvnw spring-boot:run
 ```
-The server will start on `http://localhost:8080`.
-Swagger UI can be assessed at `http://localhost:8080/swagger-ui/index.html`.
+The API will spin up on `http://localhost:8080`. 
+You can view all the Swagger docs at `http://localhost:8080/swagger-ui/index.html`.
 
-### 3. Frontend Installation
+### 3. Running the Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-The client will start on `http://localhost:5173`.
+The frontend will start on `http://localhost:5173`.
 
-## Third-Party Package Choices
-- **React Query:** Best in class declarative network caching. Handles loading/error states out of the box.
-- **Zustand:** Ultra lightweight scalable token store vs Redux which is bloated for just JWT handling.
-- **Framer Motion:** Required to hit the dynamic modern high-bar visual aesthetic required for a premium app feel.
-- **Tailwind CSS:** Radically accelerates custom CSS generation via utility classes.
+## Package Decisions
+- **React Query:** Honestly, it just makes handling loading states and caching data so much easier than doing it manually with useEffects.
+- **Zustand:** I went with Zustand over Redux because Redux felt like overkill just to hold a JWT token and user state.
+- **Framer Motion:** Added this to give the UI a more premium, modern feel.
+- **Tailwind CSS:** Speeds up styling significantly while keeping the bundle clean.
 
-## Limitations & "If I had more time"
-- Unit tests & end-to-end testing could be expanded with Jest / Cypress.
-- Adding a refresh token rotation implementation inside Spring Security and Axios interconnects.
-- Implementing filtering logic (e.g. "Pending Only", "Completed Only") for the tasks array.
-- Role-based granular privileges (e.g. Admin users dashboard to see analytics).
-
-## Submission Guidelines Complete
-- Required: TypeScript backend/frontend type safety verified.
-- Required: Clean Code (zero warnings, fully successful build).
-- Required: UI built with Tailwind/Framer.
-- Allowed extra credit:
-  1. Swagger Implementation (Available at `/swagger-ui/index.html`)
-  2. Commented logic in Java Backend 
-  3. React Zustand Store Management
-  4. Advanced Glassmorphism and animations for UI/UX
-
-When ready, simply upload/commit this repo and email the link to `vitasoft.it@gmail.com` before the deadline! Good luck!
+## Future Improvements (If I had more time)
+- **Testing:** I would definitely add some unit and integration tests using Jest and Cypress.
+- **Token Refresh:** Right now, the JWT expires after a day. A proper refresh token flow would be better for production.
+- **Filtering:** Adding a way to filter tasks by "Pending" or "Completed" would be a nice touch.
+- **Pagination:** If the task list gets massive, pagination or infinite scroll would be needed.

@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * REST Controller for Authenticaton.
- * Exposes endpoints for user registration and JWT login.
+ * Handles user registration and login flows.
+ * This is public, so no JWT required here obviously!
  */
 @RestController
 @RequestMapping("/api/auth")
@@ -21,10 +21,10 @@ public class AuthController {
     private final AuthService authService;
 
     /**
-     * Authenticates a user and generates a JWT token.
+     * Checks credentials and issues a JWT token if they are valid.
      * 
-     * @param loginDto login payload containing username and password
-     * @return AuthResponse containing the JWT access token
+     * @param loginDto username and password payload
+     * @return the generated JWT token inside an AuthResponse
      */
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginDto loginDto) {
