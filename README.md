@@ -16,7 +16,7 @@ Hey! Thanks for checking out my submission for the Full-Stack Integration Task. 
 ## Live Demo
 The application is currently deployed and live:
 - **Frontend (Vercel):** [https://taksmanager-theta.vercel.app](https://taksmanager-theta.vercel.app)
-- **Backend (Render):** [https://vita-soft-backend.onrender.com](https://vita-soft-backend.onrender.com)
+- **Backend (Render):** [https://vita-soft-backend.onrender.com](https://vita-soft-backend.onrender.com) *(Note: The code for the live backend deployment is hosted in a separate repository: [vita-soft-backend](https://github.com/VasanthMutheswaran/vita-soft-backend))*
 
 ## Running Locally
 
