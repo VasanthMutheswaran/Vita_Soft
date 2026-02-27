@@ -1,15 +1,29 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
+import { useThemeStore } from './store/themeStore';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import TaskHistory from './pages/TaskHistory';
+import Layout from './components/Layout';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const token = useAuthStore((state) => state.token);
-  return token ? <>{children}</> : <Navigate to="/login" />;
+  return token ? <Layout>{children}</Layout> : <Navigate to="/login" />;
 };
 
 const App = () => {
+  const isDarkMode = useThemeStore((state) => state.isDarkMode);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   return (
     <Router>
       <Routes>
@@ -20,6 +34,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <TaskHistory />
             </PrivateRoute>
           }
         />

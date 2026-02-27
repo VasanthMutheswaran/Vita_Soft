@@ -31,8 +31,10 @@ public class Task {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
-    
+
     private LocalDateTime updatedAt;
+
+    private LocalDateTime reminderTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

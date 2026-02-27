@@ -18,4 +18,5 @@ public class TaskDto {
     private boolean completed;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LocalDateTime reminderTime;
 }

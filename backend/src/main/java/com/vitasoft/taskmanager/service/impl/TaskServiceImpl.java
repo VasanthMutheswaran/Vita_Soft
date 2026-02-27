@@ -28,6 +28,7 @@ public class TaskServiceImpl implements TaskService {
                 .title(taskDto.getTitle())
                 .description(taskDto.getDescription())
                 .completed(taskDto.isCompleted())
+                .reminderTime(taskDto.getReminderTime())
                 .user(user)
                 .build();
 
@@ -58,6 +59,7 @@ public class TaskServiceImpl implements TaskService {
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setCompleted(taskDto.isCompleted());
+        task.setReminderTime(taskDto.getReminderTime());
 
         Task updatedTask = taskRepository.save(task);
         return mapToDto(updatedTask);
@@ -91,6 +93,7 @@ public class TaskServiceImpl implements TaskService {
                 .completed(task.isCompleted())
                 .createdAt(task.getCreatedAt())
                 .updatedAt(task.getUpdatedAt())
+                .reminderTime(task.getReminderTime())
                 .build();
     }
 }
