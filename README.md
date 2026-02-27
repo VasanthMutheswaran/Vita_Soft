@@ -30,9 +30,7 @@ VITE_API_URL=http://localhost:8080/api
 ```
 
 ### 2. Backend Configuration
-There are two backend folders in this repository:
-- `vita-soft-backend`: Configured for the live production environment.
-- **`backend`**: Configured for local development. **Use this folder** when running the app locally!
+The `backend` folder in this repository is configured for local development. **Use this folder** when running the app locally! It is already set up to connect to a local PostgreSQL database.
 
 ### 3. Database Setup
 First, make sure you have PostgreSQL running locally. Create a new database called `task_manager`. 
