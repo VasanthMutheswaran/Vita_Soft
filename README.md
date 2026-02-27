@@ -13,13 +13,32 @@ Hey! Thanks for checking out my submission for the Full-Stack Integration Task. 
 - JWT tokens are stored securely and managed via Zustand.
 - Strict TypeScript configurations across both the client and server.
 
-## Getting Started
+## Live Demo
+The application is currently deployed and live:
+- **Frontend (Vercel):** [https://taksmanager-theta.vercel.app](https://taksmanager-theta.vercel.app)
+- **Backend (Render):** [https://vita-soft-backend.onrender.com](https://vita-soft-backend.onrender.com)
 
-### 1. Database Setup
-First, make sure you have PostgreSQL running. Create a new database called `task_manager`. 
+## Running Locally
+
+**⚠️ IMPORTANT ⚠️**
+If you pull this repository to run it locally, it will **NOT** work out-of-the-box because it is currently configured for the live deployed environment. You must make the following changes to run it on `localhost`:
+
+### 1. Frontend Configuration
+By default, the frontend relies on the live backend deployed on Render. To point it to your local backend, create a new `.env` file directly inside the `frontend` directory and add the following line:
+```env
+VITE_API_URL=http://localhost:8080/api
+```
+
+### 2. Backend Configuration
+There are two backend folders in this repository:
+- `vita-soft-backend`: Configured for the live production environment.
+- **`backend`**: Configured for local development. **Use this folder** when running the app locally!
+
+### 3. Database Setup
+First, make sure you have PostgreSQL running locally. Create a new database called `task_manager`. 
 You might need to update the passwords in `backend/src/main/resources/application.properties` to match your local setup (I currently left the password as `1234` for testing).
 
-### 2. Running the Backend
+### 4. Running the Backend
 ```bash
 cd backend
 ./mvnw clean install
@@ -28,7 +47,7 @@ cd backend
 The API will spin up on `http://localhost:8080`. 
 You can view all the Swagger docs at `http://localhost:8080/swagger-ui/index.html`.
 
-### 3. Running the Frontend
+### 5. Running the Frontend
 ```bash
 cd frontend
 npm install
